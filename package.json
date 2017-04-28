@@ -1,0 +1,28 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "ip": "127.0.0.1",
+    "port": 8181
+  },
+  "scripts": {
+    "start": "node server.js --progress"
+  },
+  "author": "toni",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.4.0",
+    "fs": "0.0.2",
+    "ip": "^1.1.2",
+    "jquery": "^3.2.1",
+    "mockjs": "^1.0.1-beta3",
+    "open-browser-webpack-plugin": "0.0.5",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {}
+}

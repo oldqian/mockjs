@@ -7,7 +7,6 @@
 - 某些逻辑复杂的代码，加入或去除模拟数据时得小心翼翼。
 - 想要尽可能还原真实的数据，要么编写更多代码，要么手动修改模拟数据。
 - 特殊的格式，例如IP,随机数，图片，地址，需要去收集。
-****
 #####前几天看到mork.js的一些介绍,然后自己写了个案列跑起来了,发现还是比较实用的,所以这边整理出文章,推荐给大家
 
 [mork案例-github地址](https://github.com/ToNiQian/morkjs)
@@ -16,7 +15,6 @@
 [mork官网](http://mockjs.com/)
 
 ![mork官网介绍截图](http://upload-images.jianshu.io/upload_images/2701853-5f70765db4e93526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-****
 ####2.mork可以模拟哪些数据?
 - string
 - number

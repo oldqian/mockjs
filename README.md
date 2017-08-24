@@ -2,20 +2,34 @@
 前端需要后端的接口去完成页面的渲染,
 但是大部分的情况下,前后端需要同时进行开发,
 这种情况下,后端还没完成数据输出，前端只好写静态模拟数据。**
-###那么问题就来了
+
+### 那么问题就来了
+
 - 数据太长了，将数据写在js文件里，完成后挨个改url。
+
 - 某些逻辑复杂的代码，加入或去除模拟数据时得小心翼翼。
-- 想要尽可能还原真实的数据，要么编写更多代码，要么手动修改模拟数据。
+
+- 想要尽可能还原真实的数据，要么编写更多代码，要么手动修改模
+拟数据。
+
 - 特殊的格式，例如IP,随机数，图片，地址，需要去收集。
-#####前几天看到mork.js的一些介绍,然后自己写了个案列跑起来了,发现还是比较实用的,所以这边整理出文章,推荐给大家
 
-[mork案例-github地址](https://github.com/ToNiQian/morkjs)
+****
 
-#### 1.mork是什么？
-[mork官网](http://mockjs.com/)
+##### 前几天看到mock.js的一些介绍,然后自己写了个案列跑起来了,发现还是比较实用的,所以这边整理出文章,推荐给大家
 
-![mork官网介绍截图](http://upload-images.jianshu.io/upload_images/2701853-5f70765db4e93526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#### 2.mork可以模拟哪些数据?
+[mock案例-github地址](https://github.com/ToNiQian/mockjs)
+
+### 1.mock是什么？
+
+[mock官网](http://mockjs.com/)
+
+> ![mock官网介绍截图](http://upload-images.jianshu.io/upload_images/2701853-5f70765db4e93526.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+****
+
+### 2.mock可以模拟哪些数据?
+
 - string
 - number
 - bool
@@ -23,7 +37,7 @@
 - object
 - guid
 - id
-- title
+- title 
 - paragraph
 - image
 - address
@@ -33,10 +47,12 @@
 - email
 - ip
 - regexp
+
 ***
 
-[mork示例文档](http://mockjs.com/examples.html)
-直接附上代码
+**[mock示例文档](http://mockjs.com/examples.html)**
+
+**直接附上代码**
 
 ```
 // 使用 Mock
@@ -90,29 +106,34 @@ Mock.mock('http://1.json','get',{
     }]
 })
 ```
+
 ***
-#### 3.如何拦截ajax请求
-[mork文档](https://github.com/nuysoft/Mock/wiki/Mock.mock())
+
+### 3.如何拦截ajax请求
+
+**[mock文档](https://github.com/nuysoft/Mock/wiki/Mock.mock)**
+
 ```
 Mock.mock( rurl, rtype, template )
-
+ 
 如 Mock.mock('1.json','get',{
    'sid|+1': 1,
 } )
 记录数据模板。当拦截到匹配 rurl 和 rtype 的 Ajax 请求时，
 将根据数据模板 template 生成模拟数据，并作为响应数据返回。
 ```
+
 **注:从 1.0 开始，Mock.js 通过覆盖和模拟原生 XMLHttpRequest 的行为来拦截 Ajax 请求，不再依赖于第三方 Ajax 工具库（例如 jQuery、Zepto 等）。**
 
-#### 4.案例代码
-[mork案例-github地址](https://github.com/ToNiQian/morkjs)
-**用webpack 搭建了一个环境,
-mork文件里面放入跟后端定义好的接口模型和配置
-入口文件 引入需要的mork.js 文件
-**
+### 4.案例代码
+
+**[mock案例-github地址](https://github.com/ToNiQian/mockjs)**
+
+> 用webpack 搭建了一个环境,mock文件里面放入跟后端定义好的接口模型和配置入口文件 引入需要的mock.js 文件 
+
 ```
-process.env.NODE_ENV=='mork' && require('./mork/1.js');
-process.env.NODE_ENV=='mork' && require('./mork/2.js');
+process.env.NODE_ENV=='mock' && require('./mock/1.js');
+process.env.NODE_ENV=='mock' && require('./mock/2.js');
 var $ = require('jquery');
 $(function () {
     /**
@@ -136,19 +157,23 @@ $(function () {
     })
 })
 ```
-![项目截图](http://upload-images.jianshu.io/upload_images/2701853-07c4e390b25f095e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+> ![项目截图](http://upload-images.jianshu.io/upload_images/2701853-07c4e390b25f095e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
  ***
 
-#### 5. 如何在后端接口完成的时候,取消mork数据
+### 5. 如何在后端接口完成的时候,取消mock数据
+
 ```
 new webpack.DefinePlugin({
        'process.env': {
-            NODE_ENV: '"mork"'
+            NODE_ENV: '"mock"'
        }
 }),
-process.env.NODE_ENV=='mork' && require('./mork/1.js');
-process.env.NODE_ENV=='mork' && require('./mork/2.js');
+process.env.NODE_ENV=='mock' && require('./mock/1.js');
+process.env.NODE_ENV=='mock' && require('./mock/2.js');
 ```
-**根据webpack环境,在需要mork的时候,配置环境为mork,
-在不需要mork的时候,只需要修改node_env 环境就可以了
+
+> **根据webpack环境,在需要mock的时候,配置环境为mock,
+在不需要mock的时候,只需要修改node_env 环境就可以了
 无需注释代码,就可以完美解决后端接口还没完成的情况。**
